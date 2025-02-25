@@ -10,6 +10,22 @@
         const toggleLED = el => el.setAttribute("src", el.src.match("on") ? "led_red_off.png" : "led_red_on.png");
     </script>
 </head>
+<style>
+    main{
+        margin-top:         2rem;
+        margin-bottom:      4rem;
+        margin-inline:      auto;
+        max-inline-size:    50ch;
+    }
+    .inputs{
+        display:                grid;
+        grid-template-columns:  max-content max-content;
+        gap:                    .5em 2em;
+    }
+    input[type="email"]:invalid{
+        outline: 1px solid red;
+    }
+</style>
 <body>
 <main>
     <datalist id="choices">
@@ -18,7 +34,7 @@
         <option>third</option>
     </datalist>
     <div class = "inputs">
-        <label for="t1">text</label>            <input id="t1"  type="text" >
+        <label for="t1">text</label>            <input id="t1"  type="text" pattern="[A-Z]*">
         <label for="t1l">datalist</label>       <input id="t1l" type="text" list="choices">
         <label for="t13">password</label>       <input id="t13" type="password">
         <label for="t17">search</label>         <input id="t17" type="search">
