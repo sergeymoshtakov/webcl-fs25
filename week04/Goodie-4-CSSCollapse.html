@@ -7,7 +7,7 @@
 
         body {
             margin: 2em;
-            --collapse-height: 10em;
+            --collapse-height: fit-content;
             --arrow-size: 1em;
         }
 
@@ -15,12 +15,12 @@
         div.collapsible {
             padding-left: calc(var(--arrow-size) / 2);
             max-height:   var(--collapse-height);
-            overflow:     hidden;   /* when height is lowered, do not paint outside */
+            overflow:     clip;   /* when height is lowered, do not paint outside */
             transition:   max-height 0.5s ease-out;
         }
 
         /* collapsed div todo: change css selector*/
-        .changeme {
+        input:checked + label + div.collapsible {
             max-height: 0;
             transition:  max-height 0.5s ease-out;
         }
@@ -42,7 +42,7 @@
         }
 
         /* todo rotate arrow on collapse */
-        .changeme {
+        input:checked + label.toggle::before {
             transform:  rotate(-90deg);
             transition: transform 0.5s;
         }
@@ -58,6 +58,12 @@
 <label for="toggle" class="toggle"> &nbsp; Collapsible Section </label>
 <div class="collapsible">
     <p>collapsible content 1</p>
+    <p>collapsible content 2</p>
+    <p>collapsible content 3</p>
+    <p>collapsible content 2</p>
+    <p>collapsible content 3</p>
+    <p>collapsible content 2</p>
+    <p>collapsible content 3</p>
     <p>collapsible content 2</p>
     <p>collapsible content 3</p>
 </div>
