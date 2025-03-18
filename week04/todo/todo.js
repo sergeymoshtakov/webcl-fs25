@@ -16,7 +16,7 @@ const TodoController = () => {
         textAttr.setValidator( input => input.length >= 3   );
 
         // business rules / constraints (the text is only editable if not done)
-        doneAttr.getObs(VALUE).onChange( isDone => textAttr.getObs("EDITABLE",!isDone).setValue(!isDone));
+        doneAttr.getObs(VALUE).onChange( isDone => textAttr.getObs(EDITABLE,!isDone).setValue(!isDone));
 
         return {
             getDone:            doneAttr.getObs(VALUE).getValue,
@@ -26,7 +26,7 @@ const TodoController = () => {
             setText:            textAttr.setConvertedValue,
             onTextChanged:      textAttr.getObs(VALUE).onChange,
             onTextValidChanged: textAttr.getObs(VALID).onChange,
-            onTextEditableChanged: textAttr.getObs("EDITABLE").onChange,
+            onTextEditableChanged: textAttr.getObs(EDITABLE).onChange,
         }
     };
 
