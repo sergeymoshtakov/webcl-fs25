@@ -8,17 +8,32 @@
           background:   #1f1f56;
       }
       main {
-
+        perspective: 100vmin; /* vmax */
+        perspective-origin: right top;
       }
       main .starwars {
+        --angle: 45;
+        transform-origin: center top;
+        transform: rotateX(calc(var(--angle) * 1deg));
+        translate: 0;
+        overflow: clip;
 
           padding:          2em;
           color:            lightgoldenrodyellow;
           background-color: rgba(255, 255, 255, .3);
       }
+
+      main .starwars > * {
+        translate: translateY(-10rln);
+        transition: transform 3s linear;
+      }
+
       input[type=range] {
           margin-top:       2em;
           width:            100%;
+          @starting-style {
+            transform: translateY(0);
+          }
       }
   </style>
 </head>
@@ -46,6 +61,9 @@
     const starwars = document.querySelector(".starwars");
     const range    = document.getElementById("range");
 
+    range.oninput = _evt => {
+        starwars.style.setProperty("--angle", range.value);
+    };
 </script>
 
 </body>
